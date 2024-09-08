@@ -118,6 +118,9 @@ const mots = [
       main.classList.remove("opacite");
       footer.classList.remove("opacite");
       header.classList.remove("opacite");
+     
+
+
     }
   
   });
@@ -181,19 +184,35 @@ function affichageForm(){
     
 }
 
-function verificationEmail(emailVer){
+function verificationEmail(){
     card.addEventListener("submit", (e)=>{
     let email = document.getElementById("email_field");
+    let trim = email.value.trim()
     let regex = new RegExp("^[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9_.-]")
-    if(regex.test(email.value) === false){
+    if(regex.test(trim) === false){
         e.preventDefault()
         console.log('y a r gros');
         email.classList.add('borderError')
-    }else if(regex.test(email.value) === true){
+    }else if(regex.test(trim) === true){
         email.classList.remove(borderError)
     }
         
         
+    })
+}
+function verificationPassword(){
+    card.addEventListener("submit", (e)=>{
+        let password = document.getElementById("password_field");
+        let trim = password.value.trim()
+        let regex = new RegExp(/^.{8,}$/)
+        if(regex.test(trim) === false){
+            e.preventDefault()
+            password.classList.add('borderError');
+            console.log('ton mon de passe n est pas valide gros');
+        }else if (regex.test(trim) === true){
+            password.classList.remove('borderError');
+            
+        }
     })
 }
 
@@ -228,5 +247,6 @@ function verificationEmail(emailVer){
     })
     affichageForm()
      verificationEmail()
+     verificationPassword()
   }
   lancerScript()

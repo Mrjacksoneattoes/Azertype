@@ -1,1 +1,3 @@
-let regex = new RegExp(/^\d\w/)
+let regex = new RegExp(/^.{8,}$/)
+let password = "p355"
+console.log(regex.test(password));
